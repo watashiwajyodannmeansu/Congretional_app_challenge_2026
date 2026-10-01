@@ -15,3 +15,5 @@ dashboard:
         about
       sign up
   settings
+cryptography written with python
+frontend written with java
