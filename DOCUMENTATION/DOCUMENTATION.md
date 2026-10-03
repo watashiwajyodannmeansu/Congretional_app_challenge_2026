@@ -12,6 +12,16 @@ Documents are to be made under this format;
 
   - Use H2s to specify file purpose.
 
+- Seperation
+
+  - Use horizonal line breaks to seperate sections.
+
+- Executable
+  
+  - Use H2s for argv documentation.
+
+  - Use function syntax for how to interface with sockets.
+
 - Functions
 
   - Use H2s for function name.
@@ -41,5 +51,7 @@ Documents are to be made under this format;
 ### NOTES
 
 1. Use $...$ for inline math, and $$...$$ for math that spans multiple lines.
+
+- To use special symbols, like the blackboard U, you may have to use unicode, or LaTeX syntax.
 
 2. Use github syntax.
