@@ -9,7 +9,7 @@
 #include "utils/ctypes/string_to_else.c"
 
 int main(int argc, char *argv) {
-	//setting argv values
+	//STAGE 1; setting argv values
 	///argv[1]
 	if (argc<1) {
 		fprintf(stderr, "API REQUIRES PORT NUMBER IN ARGV[1].");
@@ -17,9 +17,9 @@ int main(int argc, char *argv) {
 	}
 	uint64_t temp_int_output;
 	temp_int_output=str_to_int(argv[1]);
-	short unsigned int port=temp_int_output;
-	if (port!=temp_int_output) {
-		fprintf(stderr, "API PORT NUMBER IS INVALID.");
+	short unsigned int client_port=temp_int_output;
+	if (client_port!=temp_int_output) {
+		fprintf(stderr, "API CLIENT PORT NUMBER IS INVALID.");
 		exit(1);
 	}
 	///argv[2]
@@ -29,7 +29,7 @@ int main(int argc, char *argv) {
 	}
 	temp_int_output=str_to_int(argv[2]);
 	short unsigned int server_ip=temp_int_output;
-	if (port!=temp_int_output) {
+	if (server_ip!=temp_int_output) {
 		fprintf(stderr, "API IP IS INVALID.");
 		exit(2);
 	}
@@ -39,12 +39,23 @@ int main(int argc, char *argv) {
 		exit(3);
 	}
 	temp_int_output=str_to_int(argv[3]);
-	short unsigned int port=temp_int_output;
-	if (port!=temp_int_output) {
+	short unsigned int server_port=temp_int_output;
+	if (server_port!=temp_int_output) {
 		fprintf(stderr, "API SERVER PORT NUMBER IS INVALID.");
 		exit(3);
 	}
-	//starting api loop
+	//STAGE 2; starting api loop
+	int client_fd=mktcpsocket();
+	int server_fd=mktcpsocket();
+	connectsocket(client_fd, client_port, "::");
+	connectsocket(server_fd, server_port, server_ip);
+	char task[1024];
+	while (1) {
+		read(client_fd, task, 1024);
+		if (stringcmp(task, 1024, "", 6)) {
+
+		}
+	}
 	//peaceful exit
 	return 0;
 }
