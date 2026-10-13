@@ -8,9 +8,9 @@ Volunteering app
 
 Log in Page: "Organization account" or "guest Account" 
 
-    - Organizational account must go through us, "admin Dashboard" 
+  - Organizational account must go through us, "admin Dashboard" 
     
-    - Guest account doesn't need any checks 
+  - Guest account doesn't need any checks 
     
 dashboard:
 
