@@ -14,20 +14,20 @@ Log in Page: "Organization account" or "guest Account"
     
 dashboard:
 
-  -profile
+  - profile
   
-  -map:
+  - map:
   
-    -events:
+    - events:
     
-      -description:
+      - description:
       
-        -time
+        - time
         
-        -location
+        - location
         
-        -about
+        - about
   
-      -sign up
+      - sign up
 
-  -settings
+  - settings
