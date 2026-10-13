@@ -3,15 +3,15 @@ Volunteering app
 # NAME; "Volun"
 # details
 Log in Page: "Organization account" or "guest Account" 
-    # Organizational account must go through us, "admin Dashboard" 
-    # Guest account doesn't need any checks 
+    - Organizational account must go through us, "admin Dashboard" 
+    - Guest account doesn't need any checks 
 dashboard:
-  profile
-  map:
-    events:
-      description:
-        time
-        location
-        about
-      sign up
-  settings
+  -profile
+  -map:
+    -events:
+      -description:
+        -time
+        -location
+        -about
+      -sign up
+  -settings
