@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv) {
 	//STAGE 1; setting argv values
+	
 	///argv[1]
 	if (argc<1) {
 		fprintf(stderr, "API REQUIRES PORT NUMBER IN ARGV[1].");
@@ -22,6 +23,7 @@ int main(int argc, char *argv) {
 		fprintf(stderr, "API CLIENT PORT NUMBER IS INVALID.");
 		exit(1);
 	}
+	
 	///argv[2]
 	if (argc<2) {
 		fprintf(stderr, "API REQUIRES IP IN ARGV[2].");
@@ -33,6 +35,7 @@ int main(int argc, char *argv) {
 		fprintf(stderr, "API IP IS INVALID.");
 		exit(2);
 	}
+	
 	///argv[3]
 	if (argc<3) {
 		fprintf(stderr, "API REQUIRES PORT NUMBER IN ARGV[3].");
@@ -44,17 +47,32 @@ int main(int argc, char *argv) {
 		fprintf(stderr, "API SERVER PORT NUMBER IS INVALID.");
 		exit(3);
 	}
+	
 	//STAGE 2; starting api loop
+	
+	///making sockets
 	int client_fd=mktcpsocket();
 	int server_fd=mktcpsocket();
-	connectsocket(client_fd, client_port, "::");
+	connectsocket(client_fd, client_port, "::1");
 	connectsocket(server_fd, server_port, server_ip);
 	char task[1024];
+	char buf[1024];
+	///loop
 	while (1) {
+		///What's your request?
 		read(client_fd, task, 1024);
-		if (stringcmp(task, 1024, "", 6)) {
-
-		}
+		if (stringcmp(task, 1024, "makeaccount", 8)) {
+			while (1) {
+				write(server_fd, "mkacc", 6);
+				read(server_fd, buf, 1024)
+				if (stringcmp(buf, 1024, "ack", 4)) {
+					break;
+				}
+			}
+				
+		} else if (stringcmp(task, 1024, "close", 6)) {
+			write(server_fd, "close", 6);
+		} 
 	}
 	//peaceful exit
 	return 0;
